@@ -1,0 +1,101 @@
+<HTML>
+    <HEAD>
+    <TITLE>立体の展開図　No.1</TITLE>
+    </HEAD>
+    <BODY>
+    <P><B>立体の展開図　No.1</No></B><BR> 
+    <iframe scrolling="no" title="手動展開図　もんだい用" src="https://www.geogebra.org/material/iframe/id/pnp8x4nj/width/1707/height/793/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false" width="1707px" height="300px" style="border:0px;"> </iframe>
+    <BR>
+    この問題は全て半角で答えなさい。又、単位はいりません。<BR>
+    <BR>
+    1　この立体の名前を答えなさい。<BR>
+    (①　　　　　)　<BR>
+
+    <BR>
+    2 この立体の高さを求めなさい。(色の濃い部分を底面とする。)<BR>
+    (②　　　　　)<BR>
+          
+    <BR>
+    3 点Aと重なる部分をB~Jの中から選択しなさい。(英語のみで答えてください。間に,(半角点)も入れること)<BR>
+    (複数選択可)<BR>
+    (③　　　　　)<BR>
+    <BR>
+    4この立体の表面積を求めなさい。(答えは数字のみで単位はいりません)<BR>
+    (④　　　　　)<BR>
+    
+</P>
+
+    <FORM>［解答欄］<BR>
+    ① <INPUT size="8" type="text" name="KAITO"><BR>
+    ② <INPUT size="8" type="text" name="KAITO"><BR>
+    ③ <INPUT size="8" type="text" name="KAITO"><BR>
+    ④ <INPUT size="8" type="text" name="KAITO"><BR>
+    <BR>
+    <INPUT type="button" name="CHKB" value="解答チェック"
+    onclick="AnswerCheck(this.form);">
+    <INPUT size="8" type="text" readonly name="TOKUTEN">点    
+    正解→<INPUT size="30" type="text" readonly name="SEIKAI">
+    <INPUT type="hidden" name="KOTAE"  value="三角柱">
+    <INPUT type="hidden" name="KOTAE"  value="3">
+    <INPUT type="hidden" name="KOTAE"  value="C,E">
+    <INPUT type="hidden" name="KOTAE"  value="84">
+    <BR>
+
+<p id="p2">
+
+<script>
+function AnswerCheck(formp){
+    // 初期化
+    OkColor = "#FFB0B0";    // 正解の色
+    NgColor = "#B0B0FF";    // 不正解の色
+    tensu = 0;    // 点数用
+    seikai_data = "";    // 正解データ作成用
+    KAISETU_data= "";   //解説データ
+    if(typeof(formp.HAITEN) == "undefined")    // 配点なし=1点
+        haiten = 1;
+    else
+        haiten = parseInt(formp.HAITEN.value);
+    // 解答チェック
+    for(n = 0; n < formp.KAITO.length; ++n){    // 問題（解答入力欄）数分繰り返す
+        if(formp.KAITO[n].value == formp.KOTAE[n].value){  // 正誤の判定
+            tensu = tensu + haiten;                          // 得点加算
+            formp.KAITO[n].style.backgroundColor = OkColor;  // 正解の色
+        }else
+            formp.KAITO[n].style.backgroundColor = NgColor;  // 不正解の色
+        seikai_data = seikai_data + "(" + (n+1) + ") ";          // 正解データ作成 番号
+        seikai_data = seikai_data + formp.KOTAE[n].value + " ";  // 正解データ作成 正解
+    }
+
+    // 得点・正解表示
+    if(typeof(formp.TOKUTEN) != "undefined")  // 得点欄あり
+        formp.TOKUTEN.value = tensu;              // 得点表示
+    if(typeof(formp.SEIKAI) != "undefined")   // 正解表示欄あり
+        formp.SEIKAI.value = seikai_data;         // 正解表示 
+}
+</script>
+    
+
+不正解の場合はこちらをご覧ください。<BR>
+<iframe scrolling="no" title="手動展開図" src="https://www.geogebra.org/material/iframe/id/nvufwg2r/width/1707/height/793/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false" width="1707px" height="300px" style="border:0px;"> </iframe>
+<BR>
+</p>
+<input type="button" value="解説"
+onclick="clickBtn2(this.form)" />
+          
+<script>//初期表示は非表示
+document.getElementById("p2").style.visibility ="hidden";
+          
+function clickBtn2(){
+    const p2 = document.getElementById("p2");
+    if(p2.style.visibility=="visible"){
+          p2.style.visibility ="hidden";
+    }else{// visibleで表示
+          p2.style.visibility ="visible";
+    }
+}
+</script>
+
+    
+</FORM>
+</BODY>
+</HTML>
